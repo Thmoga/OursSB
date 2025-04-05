@@ -1,0 +1,11 @@
+name: OURSstat
+version: '1.0.0'
+main: com.oURSstat.OURSstat
+api-version: '1.21'
+commands:
+  메뉴:
+    description: 메뉴관련 명령어
+    usage: /<command>
+  스텟:
+    description: 스텟관련 명령어
+    usage: /<command>
