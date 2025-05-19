@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +14,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 //gui 및 아이템 관련
 public class statmenu implements Listener {
@@ -76,6 +76,14 @@ public class statmenu implements Listener {
         stattype_stat.setItemMeta(statmetatype_stat);
         statmenugui.setItem(40, stattype_stat);
 
+        ItemStack stattype_statn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_statn = stattype_statn.getItemMeta();
+        statmetatype_statn.setDisplayName(" ");
+        int statn = dataManager.getPlayerStat(p.getUniqueId());
+        statmetatype_statn.setCustomModelData(2000 + statn);
+        stattype_statn.setItemMeta(statmetatype_statn);
+        statmenugui.setItem(49, stattype_statn);
+
         ItemStack stattype_STR = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_STR = stattype_STR.getItemMeta();
         List<String> loretype_STR = new ArrayList<>();
@@ -87,6 +95,14 @@ public class statmenu implements Listener {
         statmetatype_STR.setCustomModelData(1001);
         stattype_STR.setItemMeta(statmetatype_STR);
         statmenugui.setItem(1, stattype_STR);
+
+        ItemStack stattype_STRn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_STRn = stattype_STRn.getItemMeta();
+        statmetatype_STRn.setDisplayName(" ");
+        int STRn = dataManager.getPlayerSTR(p.getUniqueId());
+        statmetatype_STRn.setCustomModelData(2000 + STRn);
+        stattype_STRn.setItemMeta(statmetatype_STRn);
+        statmenugui.setItem(10, stattype_STRn);
 
         ItemStack stattype_WIS = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_WIS = stattype_WIS.getItemMeta();
@@ -100,6 +116,14 @@ public class statmenu implements Listener {
         stattype_WIS.setItemMeta(statmetatype_WIS);
         statmenugui.setItem(3, stattype_WIS);
 
+        ItemStack stattype_WISn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_WISn = stattype_WISn.getItemMeta();
+        statmetatype_WISn.setDisplayName(" ");
+        int WISn = dataManager.getPlayerWIS(p.getUniqueId());
+        statmetatype_WISn.setCustomModelData(2000 + WISn);
+        stattype_WISn.setItemMeta(statmetatype_WISn);
+        statmenugui.setItem(12, stattype_WISn);
+
         ItemStack stattype_SEN = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_SEN = stattype_SEN.getItemMeta();
         List<String> loretype_SEN = new ArrayList<>();
@@ -111,6 +135,14 @@ public class statmenu implements Listener {
         statmetatype_SEN.setCustomModelData(1003);
         stattype_SEN.setItemMeta(statmetatype_SEN);
         statmenugui.setItem(5, stattype_SEN);
+
+        ItemStack stattype_SENn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_SENn = stattype_SENn.getItemMeta();
+        statmetatype_SENn.setDisplayName(" ");
+        int SENn = dataManager.getPlayerSEN(p.getUniqueId());
+        statmetatype_SENn.setCustomModelData(2000 +SENn);
+        stattype_SENn.setItemMeta(statmetatype_SENn);
+        statmenugui.setItem(14, stattype_SENn);
 
         ItemStack stattype_VIT = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_VIT = stattype_VIT.getItemMeta();
@@ -124,6 +156,14 @@ public class statmenu implements Listener {
         stattype_VIT.setItemMeta(statmetatype_VIT);
         statmenugui.setItem(7, stattype_VIT);
 
+        ItemStack stattype_VITn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_VITn = stattype_VITn.getItemMeta();
+        statmetatype_VITn.setDisplayName(" ");
+        int VITn = dataManager.getPlayerVIT(p.getUniqueId());
+        statmetatype_VITn.setCustomModelData(2000 + VITn);
+        stattype_VITn.setItemMeta(statmetatype_VITn);
+        statmenugui.setItem(16, stattype_VITn);
+
         ItemStack stattype_END = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_END = stattype_END.getItemMeta();
         List<String> loretype_END = new ArrayList<>();
@@ -135,6 +175,14 @@ public class statmenu implements Listener {
         statmetatype_END.setCustomModelData(1005);
         stattype_END.setItemMeta(statmetatype_END);
         statmenugui.setItem(19, stattype_END);
+
+        ItemStack stattype_ENDn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_ENDn = stattype_ENDn.getItemMeta();
+        statmetatype_ENDn.setDisplayName(" ");
+        int ENDn = dataManager.getPlayerEND(p.getUniqueId());
+        statmetatype_ENDn.setCustomModelData(2000 + ENDn);
+        stattype_ENDn.setItemMeta(statmetatype_ENDn);
+        statmenugui.setItem(28, stattype_ENDn);
 
         ItemStack stattype_MND = new ItemStack(Material.GLASS_PANE);
         ItemMeta statmetatype_MND = stattype_MND.getItemMeta();
@@ -148,6 +196,23 @@ public class statmenu implements Listener {
         stattype_MND.setItemMeta(statmetatype_MND);
         statmenugui.setItem(21, stattype_MND);
 
+        ItemStack stattype_MNDn = new ItemStack(Material.GLASS_PANE);
+        ItemMeta statmetatype_MNDn = stattype_MNDn.getItemMeta();
+        statmetatype_MNDn.setDisplayName(" ");
+        int MNDn = dataManager.getPlayerMND(p.getUniqueId());
+        statmetatype_MNDn.setCustomModelData(2000 + MNDn);
+        stattype_MNDn.setItemMeta(statmetatype_MNDn);
+        statmenugui.setItem(30, stattype_MNDn);
+
         p.openInventory(statmenugui);
     }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        if (event.getView().getTitle().equals(player.getName() + "의 스텟창")) {
+            event.setCancelled(true); // 클릭 자체를 막음
+        }
+    }
+
 }

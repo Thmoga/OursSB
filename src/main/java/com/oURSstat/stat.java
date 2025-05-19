@@ -4,6 +4,7 @@ package com.oURSstat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.command.Command;
@@ -12,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -44,6 +46,19 @@ public class stat implements CommandExecutor, Listener {
             dataManager.savePlayerVIT(uuid, 0);
             dataManager.savePlayerEND(uuid, 0);
             dataManager.savePlayerMND(uuid, 0);
+        }
+    }
+
+    @EventHandler
+    public void SENstat(EntityDamageEvent e){
+        if(!(e.getEntity() instanceof Player)) return;
+        Player p = (Player) e.getEntity();
+        UUID uuid = p.getUniqueId();
+        int SEN = dataManager.getPlayerSEN(uuid);
+        double sench = SEN * 0.001;
+        if(Math.random() < sench){
+            e.setCancelled(true);
+            p.playSound(p.getLocation(), Sound.ITEM_SHIELD_BLOCK, 1f, 1.2f);
         }
     }
 
@@ -269,11 +284,6 @@ public class stat implements CommandExecutor, Listener {
                 p.sendMessage("명령어를 올바르게 입력해주세요.");
                 p.sendMessage("올바른 명령어 : /스텟");
             }
-        }
-
-        AttributeInstance maxh = p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
-        if(maxh != null){
-            maxh.setBaseValue(20.0 + stat);
         }
 
         return true;

@@ -32,14 +32,36 @@ public final class OURSstat extends JavaPlugin {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    int stat = dataManager.getPlayerStat(player.getUniqueId());
+
+                    int END = dataManager.getPlayerEND(player.getUniqueId());
+                    int VIT = dataManager.getPlayerVIT(player.getUniqueId());
+                    int STR = dataManager.getPlayerSTR(player.getUniqueId());
+                    int MND = dataManager.getPlayerMND(player.getUniqueId());
+                    int SEN = dataManager.getPlayerSEN(player.getUniqueId());
+                    int WIS = dataManager.getPlayerWIS(player.getUniqueId());
+
+                    double END_at = END * 0.02;
+                    double END_toat = END;
+                    double STR_D = STR * 0.5;
+
+                    //힘 스텟
+                    AttributeInstance attackAttr = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE);
+                    if (attackAttr != null) attackAttr.setBaseValue(STR_D);
+
+                    //지구력 스텟
+                    AttributeInstance END_Armor_at = player.getAttribute(Attribute.GENERIC_ARMOR);
+                    AttributeInstance END_Armor_toat = player.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS);
+                    if(END_Armor_at != null) END_Armor_at.setBaseValue(END_at);
+                    if(END_Armor_toat != null) END_Armor_toat.setBaseValue(END_toat);
+
+                    //체력 스텟
                     AttributeInstance maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
                     if (maxHealth != null) {
-                        maxHealth.setBaseValue(20.0 + stat);
+                        maxHealth.setBaseValue(20.0 + VIT);
                     }
                 }
             }
-        }.runTaskTimer(this, 0L, 20L); // 0틱 후 시작, 20틱(1초)마다 반복
+        }.runTaskTimer(this, 0L, 5L); // 0틱 후 시작, 5틱(0.25초)마다 반복
     }
 
     @Override
